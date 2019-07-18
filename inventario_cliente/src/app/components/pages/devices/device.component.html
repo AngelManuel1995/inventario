@@ -1,0 +1,29 @@
+<div class="fondo-negro animated fadeIn fast" [ngClass]="_devicesService.oculto">
+    <div class="modal" style="display: block;" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ _devicesService.deviceChosen.type }}: <strong>{{ _devicesService.deviceChosen.serie }}</strong></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img [src]="_devicesService.deviceChosen.img" width="200" [alt]="_devicesService.deviceChosen.serie">
+                        </div>
+                        <div class="col-md-7">
+                            <p>Marca: <strong>{{ _devicesService.deviceChosen.brand }}</strong></p>
+                            <p>Modelo: <strong>{{ _devicesService.deviceChosen.model }}</strong></p>
+                            <p>Nombre: <strong>{{ _devicesService.deviceChosen.name }}</strong></p>
+                            <p>Propiedad de: <strong>{{ _devicesService.deviceChosen.ownership }}</strong></p>
+                            <p>Ciudad: <strong>{{ _devicesService.deviceChosen.city }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="_devicesService.oculto = 'oculto'">Cerrar</button>
+                    <button type="button" class="btn btn-info" (click)="deviceTracking(_devicesService.deviceChosen)">Seguimiento</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

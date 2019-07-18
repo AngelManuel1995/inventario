@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col-md-3">
+        <h3 class="text-themecolor">Equipos: {{devices.length}} en total</h3>
+    </div>
+    <div class="col-md-7 button-options">
+        <button class="btn btn-danger btn-sm" (click)="filterByParams('PRESTADO')">
+            prestados
+        </button>
+        <button class="btn btn-outline-danger btn-sm" (click)="filterByParams('NOPRESTABLE')">
+            no prestables
+        </button>
+        <button class="btn btn-success btn-sm" (click)="filterByParams('DISPONIBLE')">
+            para prestar 
+        </button>
+        <button class="btn btn-primary btn-sm" (click)="filterByParams('TODOS')">
+            todos
+        </button>
+        <button class="btn btn-info btn-sm" (click)="openFormulario()">
+            Agregar
+        </button>
+        
+        <input type="text" style="width: 30%;" (keyup)="filterByAll($event)" placeholder="Busca uno especifico" class="form-control">
+        
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-info btn-sm" (click)="makeLentHandle()" *ngIf="checkOnes !== 0">
+            {{ message }}
+        </button>
+    </div>
+</div>
+
+<div class="row page-titles">
+    <div class="col-md-12">
+        <table class="table" border="1">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-center">
+                        Tipo
+                    </th>
+                    <th class="text-center">
+                        Propiedad
+                    </th>
+                    <th class="text-center">
+                        Marca
+                    </th>
+                    <th class="text-center">
+                        Modelo
+                    </th>
+                    <th class="text-center">
+                        Nombre
+                    </th>
+                    <th class="text-center">
+                        Serie
+                    </th>
+                    <th class="text-center">
+                        Ciudad
+                    </th>
+                    <th class="text-center">
+                        Info
+                    </th>
+                    <th class="text-center">
+                        Opc
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let device of devices | keys">
+                    <td class="text-center">
+                        {{ devices[device].type }}
+                    </td>
+                    <td class="text-center">
+                        {{ devices[device].ownership }}
+                    </td>
+                    <td class="text-center">
+                        {{ devices[device].brand }}
+                    </td>
+                    <td class="text-center">
+                        {{ devices[device].model }}
+                    </td>
+                    <td class="text-center">
+                        {{ devices[device].name }}
+                    </td>
+                    <td class="text-center">
+                        {{ devices[device].serie }}
+                    </td>
+                    <td class="text-center">
+                        {{ devices[device].city }}
+                    </td>
+                    <td class="text-center">
+                        <a class="cursor-pointer" title="Ver información completa" (click)="showDevice(devices[device])"><img [src]="devices[device].img" width="30" [alt]="devices[device].name"></a>
+                    </td>
+                    <td class="text-center">
+                        <div *ngIf="devices[device].state==='DISPONIBLE'">
+                            <label>
+                                <input style="opacity:1; position: relative; left: 0;" [(ngModel)]="devices[device].checked" name="checked" (change)="changePushOrPup(devices[device])" type="checkbox" id="cbox1" value="">
+                            </label>
+                        </div>
+
+                        <div *ngIf="devices[device].state==='PRESTADO'">
+                            <button class="btn btn-danger btn-sm">Prestado</button>
+                        </div>
+
+                        <div *ngIf="devices[device].state ==='NOPRESTABLE'">
+                           <p class="text-danger">no prestable</p>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

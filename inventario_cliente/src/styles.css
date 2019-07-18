@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+.card-login {
+    padding: 25px;
+    border: 2px solid gray;
+    /*border-radius: 20px;*/
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 5px gray;
+} 
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.button-options button{
+    margin-right: 5px;
+}
+
+.border-add-supply {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-top: 20px;
+    box-shadow: 3px 3px 3px #CCC;
+}

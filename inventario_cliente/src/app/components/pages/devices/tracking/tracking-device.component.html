@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-12" *ngIf="device">
+        <h3 class="text-themecolor">Seguimiento del equipo: <strong>{{ device.type }} {{ device.brand }} {{ device.model }} {{ device.serie }} </strong> hay <strong>{{registries.length}}</strong> registros de prestamos actualmente.</h3>
+    </div>
+</div>
+
+<div class="row page-titles" *ngIf="registries">
+    <div class="col-md-12">
+        <table class="table" border="1">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center">
+                        Presta
+                    </th>
+                    <th class="text-center">
+                        Recibe
+                    </th>
+                    <th class="text-center">
+                        Fecha pestamo
+                    </th>
+                    <th class="text-center">
+                        Observaciones prestamo
+                    </th>
+                    <th class="text-center">
+                        Observaciones devolución
+                    </th>
+                    <th class="text-center">
+                        Ticket
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let registry of registries | keys; let i = index">
+                    <td class="text-center">
+                        {{ i + 1 }}
+                    </td>
+                    <td class="text-center">
+                        {{ registries[registry].lender.name }}
+                    </td>
+                    <td class="text-center">
+                        {{ registries[registry].receiver }}
+                    </td>
+                    <td class="text-center">
+                        Desde el {{ registries[registry].startDate | date}} Hasta el
+                        {{ registries[registry].endDate | date}} 
+                    </td>
+                    <td class="text-center">
+                        {{ registries[registry].deliveryObservations }}
+                    </td>
+                    <td class="text-center">
+                        {{ registries[registry].feedbackObservations }}
+                    </td>
+                    <td class="text-center">
+                        {{ registries[registry].ticket }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,149 @@
+import { Component } from '@angular/core'
+import { DevicesService } from '../../../services/devices.service'
+import { RegistriesService } from '../../../services/index.service'
+import { Router } from '@angular/router'
+import Swal from 'sweetalert2'
+
+@Component({
+    selector:'app-devices',
+    templateUrl:'./devices.component.html'
+})
+
+export class DevicesComponent {
+
+    public devices = []
+    public buckUpDevices = []
+    public devicesToLend = []
+    public checkOnes:number = 0
+    public message = 'Prestar'
+    constructor(public _devicesService:DevicesService, 
+                public _router:Router,
+                public _registriesService:RegistriesService) {
+        this._devicesService.getAll().subscribe((devices) => {
+            this.devices = devices
+            
+            this.devices.forEach((device) => {
+                device.checked = false
+            })
+            this.buckUpDevices =  [...this.devices]
+        })
+    }
+
+
+    openFormulario(){
+        Swal.fire({
+            title: 'Nuevo Equipo',
+            html:
+              '<div class="row"> <div class="col-md-4"> <label for="tipo"> <strong> Tipo </strong> </label> </div> <div class="col-md-8"> <input id="tipo" value="Portatil" class="form-control"> </div>' +
+              '<div class="col-md-4"> <label for="propiedad"> <strong> Propiedad </strong> </label> </div> <div class="col-md-8"> <input id="propiedad" value="Continental Gold" class="form-control"> </div>' + 
+              '<div class="col-md-4"> <label for="marca"> <strong> Marca </strong> </label> </div> <div class="col-md-8"> <input id="marca" value="Lenovo" class="form-control"> </div>' + 
+              '<div class="col-md-4"> <label for="modelo"> <strong> Modelo </strong> </label> </div> <div class="col-md-8"> <input id="modelo" value="Lnv-2019" class="form-control"> </div>' + 
+              '<div class="col-md-4"> <label for="nombre"> <strong> Nombre </strong> </label> </div> <div class="col-md-8"> <input id="nombre" value="lenovo-10" class="form-control"> </div>' +
+              '<div class="col-md-4"> <label for="serial"> <strong> Serial </strong> </label> </div> <div class="col-md-8"> <input id="serial" value="Lnv-s3-r5-t6" class="form-control"> </div>' +
+              '<div class="col-md-4"> <label for="ciudad"> <strong> Ciudad </strong> </label> </div> <div class="col-md-8"> <input id="ciudad" value="Medellín" class="form-control"> </div>' + 
+              '<div class="col-md-4"> <label for="prestamo"> <strong> Para prestar </strong> </label> </div> <div class="col-md-8"> <select id="prestamo" class="form-control"> <options> <option value="true">SI</option> <option value="false">NO</option> </options> </select> </div> </div>',
+            focusConfirm: false,
+            preConfirm: () => {
+                let tipo:any = document.getElementById('tipo')
+                let propiedad:any = document.getElementById('propiedad')
+                let marca:any = document.getElementById('marca')
+                let modelo:any = document.getElementById('modelo')
+                let nombre:any = document.getElementById('nombre')
+                let serial:any = document.getElementById('serial')
+                let ciudad:any = document.getElementById('ciudad')
+                let isParaPrestar:any = document.getElementById('prestamo')
+                
+              return {
+                    type: tipo.value,
+                    ownership: propiedad.value,
+                    brand: marca.value,
+                    model: modelo.value,
+                    name: nombre.value,
+                    serie: serial.value,
+                    city: ciudad.value,
+                    isToLend: isParaPrestar.value
+              }
+            }
+          }).then((equipo) =>{
+              if(equipo.value){
+                  this._devicesService.save(equipo).subscribe(equipoGuardado => {
+                      this._devicesService.getOne(equipoGuardado).subscribe(equipo => {
+                          this.devices.push(equipo)
+                      })
+                  })  
+              }
+          })
+    }
+
+    showDevice(device){
+        this._devicesService.oculto = ''
+        this._devicesService.deviceChosen = device
+    }
+
+    filterByParams(params){
+        this.devicesToLend = []
+        if(params === 'TODOS'){
+            this.devices = [...this.buckUpDevices]
+        }else{
+            this.devices = [...this.buckUpDevices]
+            this.devices = this.devices.filter((device) => {
+                return device.state === params
+            })
+        }
+    }
+
+    changePushOrPup(){
+        this.getCheckedOnes()
+        /*let index = this.verifyInArray(device)
+
+        if(this.devicesToLend.length === 0){
+            this.devicesToLend.push(device)
+        }else if(index === -1){
+            this.devicesToLend.push(device)
+        }else{
+            this.devicesToLend.splice(index,1)
+        }*/
+
+        if(this.checkOnes === 1){
+            this.message = `Prestar ${this.checkOnes} dispositivo`
+        }else{
+            this.message = `Prestar ${this.checkOnes} dispositivos`
+        }
+    }
+
+    verifyInArray(device){
+        return this.devicesToLend.findIndex(({_id}) => {
+            return device._id === _id
+        })
+    }
+
+    makeLentHandle(){
+        const devicesToLend = this.devices.filter((device) => device.checked )
+        this._registriesService.setDevicesToLent(devicesToLend)
+        this._router.navigate(['/registrar'])
+    }
+
+    getCheckedOnes(){
+        this.checkOnes = 0
+        this.devices.forEach((device) => {
+            if(device.checked){
+                this.checkOnes = this.checkOnes + 1
+            }
+        })
+    }
+
+    filterByAll(event){
+        this.devices = this.buckUpDevices.filter((device) => {
+            return device.serie.toLowerCase().includes(event.target.value.toLowerCase()) || 
+                   device.brand.toLowerCase().includes(event.target.value.toLowerCase()) || 
+                   device.ownership.toLowerCase().includes(event.target.value.toLowerCase()) || 
+                   device.name.toLowerCase().includes(event.target.value.toLowerCase()) ||
+                   device.model.toLowerCase().includes(event.target.value.toLowerCase()) ||
+                   device.type.toLowerCase().includes(event.target.value.toLowerCase()) || 
+                   device.city.toLowerCase().includes(event.target.value.toLowerCase()) 
+        })
+    }
+
+}
+
+

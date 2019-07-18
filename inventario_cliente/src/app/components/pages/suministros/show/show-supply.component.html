@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="text-themecolor">Historia de suministro</h3>
+    </div>
+</div>
+
+<div class="row page-titles" *ngIf="supplyRecords.length > 0">
+    <div class="col-md-12">
+        <table class="table" border="1">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-center">
+                        Descripción
+                    </th>
+                    <th class="text-center">
+                        Cantidad
+                    </th>
+                    <th class="text-center">
+                        Fecha
+                    </th>
+                    <th class="text-center">
+                        Por
+                    </th>
+                    <th class="text-center">
+                        Código
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let supply of supplyRecords | keys">
+                    <td class="text-center">
+                        <div *ngFor="let supply of supplyRecords[supply].registry.supplies">
+                            <span *ngIf="supply._id == idSupplyParams">
+                                {{ supply.supply }}
+                                {{ supply.color }}
+                                ({{ supply.reference }})
+                                {{ supply.brand }}
+                            </span>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <span *ngIf="supplyRecords[supply].registry.type==='DOWNLOAD'">Salen</span>
+                        <span *ngIf="supplyRecords[supply].registry.type==='LOAD'">Entran</span>
+                        {{ supplyRecords[supply].amount }}
+                    </td>
+                    <td class="text-center">
+                        {{ supplyRecords[supply].date | date }}
+                    </td>
+                    <td class="text-center">
+                        {{ supplyRecords[supply].user.name }}
+                    </td>
+                    <td class="text-center">
+                        {{ supplyRecords[supply].reference }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

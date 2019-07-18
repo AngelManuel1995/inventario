@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h3 class="text-themecolor">Agregar suministro</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 border-add-supply" style="margin: auto;">
+        <form ngNativeValidate (submit)="confirm()">
+            <div class="form-group">
+                <label for="brand">Marca</label>
+                <select [(ngModel)]="supply.brand" class="form-control" name="brand" id="brand" required="true">
+                    <option value="">Seleccione Marca</option>
+                    <option *ngFor="let brand of supplies.brands" [value]="brand.value"> {{brand.text}} </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="supply">Tipo <span *ngIf="typeSupply" class="text-info"> <strong>{{typeSupply.toLowerCase()}}</strong></span> </label>
+                <select (change)="showColorList($event)" class="form-control" [(ngModel)]="supply.supply" name="supply" id="supply" required="true">
+                    <option value="">Seleccione Tipo</option>
+                    <option *ngFor="let type of supplies.types" [value]="type.value"> {{type.text}} </option>
+                </select>
+            </div>
+            <div class="form-group" *ngIf="isConsumible">
+                <label for="color">Color</label>
+                <select [(ngModel)]="supply.color" class="form-control" name="color" id="color" required="true">
+                    <option value="null">Seleccione Tipo</option>
+                    <option *ngFor="let type of supplies.colors" [value]="type.value"> {{type.text}} </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="reference">Referencia</label>
+                <input class="form-control" required="true" placeholder="Ingrese la referencia del suministro" [(ngModel)]="supply.reference" name="reference" id="reference" type="text">
+            </div>
+            <div class="form-group">
+                <label for="initialCuantity">Cantidad Inicial</label>
+                <input class="form-control" readonly="true" name="initialCuantity" id="initialCuantity" type="text" value="0">
+            </div>
+            <div class="form-group text-center">
+                <button class="btn btn-sm btn-info" type="submit" style="margin: 0px 10px;">Confirmar</button>
+                <button class="btn btn-sm btn-danger">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

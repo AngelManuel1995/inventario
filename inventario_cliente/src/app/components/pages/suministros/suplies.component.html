@@ -1,0 +1,78 @@
+<div class="row">
+    <div class="col-md-2" *ngIf="supplies">
+        <h3 class="text-themecolor">Suministros: {{ supplies.length }} </h3>
+    </div>
+    <div class="col-md-5 button-options">
+        <input type="text" style="width: 35%;" (keyup)="filterByAll($event)" placeholder="Busca uno especifico" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary btn-sm" (click)="rechargeSupplies('LOAD')" *ngIf="checkOnes !== 0">
+            {{ message }}
+        </button>
+        <button class="btn btn-success btn-sm" style="margin: 0px 10px;" (click)="rechargeSupplies('DOWNLOAD')" *ngIf="checkOnes !== 0">
+            {{ message1 }}
+        </button>
+    </div>
+    <div class="col-md-1">
+        <button (click)="addNewSupply()" class="btn btn-info btn-sm">Agregar</button>
+    </div>
+</div>
+
+<div class="row page-titles">
+    <div class="col-md-12">
+        <table class="table" border="1">
+            <thead class="thead-light">
+                <tr>
+                    <th class="text-center">
+                        Tipo
+                    </th>
+                    <th class="text-center">
+                        Marca
+                    </th>
+                    <th class="text-center">
+                        Suministro
+                    </th>
+                    <th class="text-center">
+                        color
+                    </th>
+                    <th class="text-center">
+                        Referencia
+                    </th>
+                    <th class="text-center">
+                        Cantidad
+                    </th>
+                    <th class="text-center">
+                        Opciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let supply of supplies | keys">
+                    <td class="text-center">
+                        {{ supplies[supply].type }}
+                    </td>
+                    <td class="text-center">
+                        {{ supplies[supply].brand }}
+                    </td>
+                    <td class="text-center">
+                        {{ supplies[supply].supply }}
+                    </td>
+                    <td class="text-center">
+                        {{ supplies[supply].color }}
+                    </td>
+                    <td class="text-center">
+                        {{ supplies[supply].reference }}
+                    </td>
+                    <td class="text-center">
+                        <span (click)="showDetails(supplies[supply])" class="text-info" style="cursor: pointer;"> <strong>{{ summary(supplies[supply]) }}</strong></span>
+                    </td>
+                    <td class="text-center">
+                        <label>
+                            <input style="opacity:1; position: relative; left: 0;"  [(ngModel)]="supplies[supply].checked" name="checked" (change)="changePushOrPup(supplies[supply])" type="checkbox" id="cbox1" >
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

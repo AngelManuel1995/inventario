@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-12 text-center" *ngIf="registries.length > 0" >
+        <h3 class="text-themecolor">
+            Equipos prestados actualmente: {{ registries.length }}
+        </h3>
+    </div>
+
+    <div class="col-md-4 animated fast fadeIn" *ngFor="let registry of registries | keys">
+        <div class="card" style="box-shadow: 3px 3px 3px #ccc;">
+            <div class="card-title text-center">
+                <strong>Detalle de prestamo del equipo: <span class="text-info">{{registries[registry].device.serie}}</span></strong>
+            </div>
+            <div class="text-center card-body">
+                <span>Equipo: <strong>{{registries[registry].device.type}} {{registries[registry].device.brand}} {{registries[registry].device.name}}</strong></span> 
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="startDate">Prestado el día:</label><br/>
+                        <strong>{{registries[registry].startDate | date }}</strong>
+                        <hr>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="endDate">Hasta el día:</label><br/>
+                        <strong>{{registries[registry].endDate | date }}</strong>
+                        <hr>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="receiver">Prestado por:</label><br />
+                        <strong>{{registries[registry].lender.email}}</strong>
+                        <hr>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="receiver">Prestado a</label><br />
+                        <strong>{{registries[registry].receiver}}</strong>
+                        <hr>
+                    </div>
+                    <div class="col-md-12 text-justify">
+                        <span><strong>Detalles de entrega: </strong></span>
+                        {{ registries[registry].deliveryObservations }}
+                        <hr>
+                    </div>
+                    <div class="col-md-12">
+                        <span> <strong>Detalles de devolución: </strong></span>
+                        <span *ngIf="getDaysToReturn(registries[registry]) !== 1" class="text-danger">En {{getDaysToReturn(registries[registry])}} días se puede completar este registro.</span>
+                        <!--<textarea [(ngModel)]="registry.feedbackObservations" name="feedbackObservations" *ngIf="getDaysToReturn(registry) === 1" name="" id="" cols="30" rows="4" class="form-control" placeholder="Ingrese las condiciones de entrega del equipo"></textarea>-->
+                        <textarea [(ngModel)]="registries[registry].feedbackObservations" name="feedbackObservations" name="" id="" cols="30" rows="4" class="form-control" placeholder="Ingrese las condiciones de entrega del equipo"></textarea>
+                        <hr>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <!--<button (click)="makeRegistry(registries[device])" [disabled]="getDaysToReturn(registry) !== 1" class="btn btn-success btn-sm btn-block">Recibir</button>-->
+                            <button (click)="completeRegistry(registries[registry])" class="btn btn-success btn-sm btn-block">Recibir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    

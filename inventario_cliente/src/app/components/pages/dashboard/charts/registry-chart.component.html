@@ -1,0 +1,13 @@
+<div class="text-center">
+    <span><strong>{{chartTitle}}</strong></span>
+</div>
+<hr>
+<div style="display: block">
+    <canvas baseChart 
+        [datasets]="barChartData" 
+        [labels]="barChartLabels" 
+        [options]="barChartOptions" 
+        [legend]="barChartLegend" 
+        [chartType]="barChartType">
+    </canvas>
+</div>

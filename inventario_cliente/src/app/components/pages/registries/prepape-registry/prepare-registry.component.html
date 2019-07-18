@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h3 class="text-themecolor">Prestar estos equipos</h3>
+    </div>
+
+    <div class="col-md-4 animated fast fadeIn" *ngFor="let device of registries | keys">
+        <div class="card" style="box-shadow: 3px 3px 3px #ccc;">
+            <div class="card-title text-center">
+                Serie: <strong>{{ registries[device].serie }}</strong>
+            </div>
+            <div class="text-center card-body">
+                <span>Equipo: <strong>{{ registries[device].type }} {{ registries[device].brand }} {{ registries[device].model }}</strong></span> 
+            </div>
+            <div class="card-body">
+                <form class="form" ngNativeValidate>
+                    <div class="form-group">
+                        <label for="startDate">Fecha inicio</label>
+                        <input class="form-control" [(ngModel)]="registries[device].startDate" name="startDate" id="startDate" type="date" required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="endDate">Fecha fin</label>
+                        <input class="form-control" [(ngModel)]="registries[device].endDate" name="endDate" id="endDate" type="date" required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="receiver">Correo de quien recibe</label>
+                        <input class="form-control" [(ngModel)]="registries[device].receiver" name="receiver" id="receiver" placeholder="correo de la persona que recibe" type="email" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiver">Ticket</label>
+                        <input class="form-control" [(ngModel)]="registries[device].ticket" name="ticket" id="ticket" placeholder="Ingrese el ticket" type="text" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryObservations">Observaciones de entrega</label>
+                        <textarea class="form-control" [(ngModel)]="registries[device].deliveryObservations" name="deliveryObservations" id="deliveryObservations" required="true"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button (click)="makeRegistry(registries[device])" type="submit" class="btn btn-success btn-sm btn-block">Aceptar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    

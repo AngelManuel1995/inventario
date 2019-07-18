@@ -1,0 +1,13 @@
+<h3 class="text-themecolor">Dashboard</h3>
+<div class="row" *ngIf="mostLentDevices.length > 0">
+    <div class="col-md-6">
+        <div class="card">
+            <app-registry-chart [chartInfo]="mostLentDevices" [chartTitle]="'Los equipos que más veces han sido prestados'"></app-registry-chart>
+        </div>
+    </div>
+    <!--<div class="col-md-6">
+        <div class="card">
+            <app-registry-chart [chartTitle]="'Las personas que más equipos han prestado'"></app-registry-chart>
+        </div>
+    </div>-->
+</div>

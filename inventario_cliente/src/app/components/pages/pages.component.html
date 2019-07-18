@@ -1,0 +1,19 @@
+<!--<div class="preloader">
+    <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Admin Pro</p>
+    </div>
+</div> -->
+
+<div id="main-wrapper">
+   <app-navbar></app-navbar>
+    <app-sidebar></app-sidebar>
+    <div class="page-wrapper">
+        <div class="container-fluid">         
+            <router-outlet></router-outlet>
+        </div>
+        <footer class="footer"> © {{ fecha | date}} ARUS evolución GTI </footer>
+    </div>
+</div>
+
+<app-device>Cargando</app-device>
