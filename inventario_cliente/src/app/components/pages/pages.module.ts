@@ -15,7 +15,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { DevicesService }  from '../../services/devices.service'
 import { KeyPipe } from '../../pipes/keys.pipe'
 import { DeviceComponent } from '../../components/pages/devices/device.component'
-import { RegistriesComponent } from '../../components/pages/registries/registries.component' 
+import { RegistriesComponent } from '../../components/pages/registries/registries.component'
+import { CatalogueComponent } from '../pages/catalogue/catalogue.component' 
 import { ServicesModule } from '../../services/services.module'
 import { PrepareRegistryComponent } from './registries/prepape-registry/prepare-registry.component'
 import { ChartsModule } from 'ng2-charts';
@@ -23,6 +24,10 @@ import { RegistryChartComponent } from '../pages/dashboard/charts/registry-chart
 import { TrackingDeviceComponent } from '../pages/devices/tracking/tracking-device.component'
 import { SupplyComponent }  from '../pages/suministros/supply/supply.component'
 import { ShowSupplyComponent } from '../pages/suministros/show/show-supply.component'
+import { DeviceDetailsComponent } from '../../components/pages/devices/details/device-details.component'
+import { SoftwarePipe } from '../../pipes/icons.pipe'
+
+
 
 @NgModule({
   declarations: [
@@ -31,12 +36,15 @@ import { ShowSupplyComponent } from '../pages/suministros/show/show-supply.compo
     DashboardComponent,
     DevicesComponent,
     SupliesComponent,
+    DeviceDetailsComponent,
     AddUserComponent,
     UserComponent,
     UsersComponent,
     KeyPipe,
+    SoftwarePipe,
     DeviceComponent,
     RegistriesComponent,
+    CatalogueComponent,
     PrepareRegistryComponent,
     RegistryChartComponent,
     TrackingDeviceComponent,
@@ -48,13 +56,16 @@ import { ShowSupplyComponent } from '../pages/suministros/show/show-supply.compo
     SidebarComponent,
     DashboardComponent,
     DevicesComponent,
+    DeviceDetailsComponent,
     SupliesComponent,
     AddUserComponent,
     UserComponent,
     UsersComponent,
     KeyPipe,
+    SoftwarePipe,
     DeviceComponent,
     RegistriesComponent,
+    CatalogueComponent,
     PrepareRegistryComponent,
     RegistryChartComponent,
     TrackingDeviceComponent,

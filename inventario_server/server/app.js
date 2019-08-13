@@ -5,7 +5,6 @@ const core = require('./core/cores')
 
 const app = express() 
 
-
 //Middlewares
 app.use(core);
 app.use(bodyParse.json()) 

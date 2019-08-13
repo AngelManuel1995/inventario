@@ -14,6 +14,9 @@ import { PagesComponent }     from './components/pages/pages.component'
 import { PagesModule } from './components/pages/pages.module'
 import { DevicesService } from './services/devices.service'
 
+import { LoginService } from './services/shared/login.service'
+import { LoginGuard } from './guards/login.guard'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,9 @@ import { DevicesService } from './services/devices.service'
     HttpClientModule,
   ],
   providers: [
-    DevicesService
+    DevicesService,
+    LoginGuard,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,14 +1,14 @@
 const mongoose = require('mongoose') 
 
 let DeviceSchema = new mongoose.Schema({
-    type:{
+	ip:{
         type:String,
 		required:true,
 		trim:true,
 		minlength:1
 	},
-	ownership:{
-		type:String,
+    type:{
+        type:String,
 		required:true,
 		trim:true,
 		minlength:1
@@ -36,11 +36,35 @@ let DeviceSchema = new mongoose.Schema({
 		required:true,
 		trim:true,
 		minlength:1,
-		unique:true
+		unique:false
 	},
-	city:{
+	operatingSystem: {
 		type:String,
-		required:true,
+		required:false,
+		trim:true,
+		minlength:1	
+	},
+	processor:{
+		type:String,
+		required:false,
+		trim:true,
+		minlength:1	
+	},
+	ramMemory:{
+		type:String,
+		required:false,
+		trim:true,
+		minlength:1		
+	},
+	hardDisk:{
+		type:String,
+		required:false,
+		trim:true,
+		minlength:1	
+	},
+	macAddress: {
+		type:String,
+		required:false,
 		trim:true,
 		minlength:1
 	},
@@ -49,16 +73,13 @@ let DeviceSchema = new mongoose.Schema({
 		minlength:1,
 		default:'https://previews.123rf.com/images/ylivdesign/ylivdesign1801/ylivdesign180104316/94067393-icono-de-reparaci%C3%B3n-port%C3%A1til-ilustraci%C3%B3n-de-dibujos-animados-de-icono-de-vector-de-reparaci%C3%B3n-de-port%C3%A1tiles-para-.jpg'
 	},
-	isToLend:{
-		type:Boolean,
-		required:true
-	},
-	state:{
-		type:String,
-		required:false,
-		trim:true,
-		enum: ['DISPONIBLE', 'PRESTADO', 'NOPRESTABLE'],
-		minlength:1
+	applications:[
+		{
+			type:String
+		}
+	], 
+	lastDiscovery:{
+		type: Date
 	}
 }) 
 

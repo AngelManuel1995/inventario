@@ -46,12 +46,6 @@ app.patch('/recharge', (req, res) => {
     })
 })
 
-const getIdToRecharge = (supplies) => {
-    return supplies.map(({ _id }) => {
-        return { _id }
-    })
-}
-
 app.get('/:id', (req, res) => {
     const supply = req.params.id
     SupplyRecord.find({"registry.supplies": supply}).populate("registry.supplies", "color brand supply type reference").populate("user", 'name').then((supplyRecords) => {
@@ -60,6 +54,12 @@ app.get('/:id', (req, res) => {
         res.status(400).json({OK:false, error})
     })
 })
+
+const getIdToRecharge = (supplies) => {
+    return supplies.map(({ _id }) => {
+        return { _id }
+    })
+}
 
 const createSupplyRecord = (reference, type, ids, amount) => {
     return {

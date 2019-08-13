@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { QueriesServices } from '../../../services/index.service'
+import { DevicesService } from '../../../services/devices.service'
 
 @Component({
     selector:'app-dashboard',
@@ -7,17 +7,37 @@ import { QueriesServices } from '../../../services/index.service'
 })
 
 export class DashboardComponent {
-
-    public fecha = new Date()
-    public mostLentDevices = []
-
-    constructor(public _queriesServices:QueriesServices){
-        this._queriesServices.getTopTenMostLent().subscribe((summary:any) => {
-            if(!summary.OK){
-                throw new Error('Error al cargar la información del top')
-            }
-            this.mostLentDevices = summary.summary
+    public ver = false
+    public allTheSoftware = []
+    public allTheSoftwareBuckUp = []
+    constructor(public _devicesService:DevicesService){
+        this._devicesService.getAllInventary().subscribe((data:any) => {
+            this.allTheSoftware = this.getAllSoftware(data)
+            this.allTheSoftware.shift()
+            this.allTheSoftwareBuckUp = [...this.allTheSoftware]
+            this.ver = true
         })
     }
+
+
+    getAllSoftware({devices}):Array<String> {
+        const softwareList = [...devices[0].applications]
+        for(let j = 0; j < devices.length; j++){
+            for(let i = 0; i < devices[j].applications.length; i++){
+               if( !softwareList.includes(devices[j].applications[i]) ){
+                    softwareList.push(devices[j].applications[i])
+               }
+            }
+        }
+
+        return softwareList
+    }
+
+    filter({value}){
+       this.allTheSoftware = this.allTheSoftwareBuckUp.filter((data:String) => {
+           return data.toLowerCase().includes(value.toLowerCase())
+       }) 
+    }
+
 }
 

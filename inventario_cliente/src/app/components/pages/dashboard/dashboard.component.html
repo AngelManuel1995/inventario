@@ -1,13 +1,28 @@
 <h3 class="text-themecolor">Dashboard</h3>
-<div class="row" *ngIf="mostLentDevices.length > 0">
-    <div class="col-md-6">
+
+
+<div class="row" *ngIf="ver">
+    <div class="col-md-12">
         <div class="card">
-            <app-registry-chart [chartInfo]="mostLentDevices" [chartTitle]="'Los equipos que más veces han sido prestados'"></app-registry-chart>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th colspan="2"> <input type="text" (keyup)="filter($event.target)" class="form-control"> </th>
+                    </tr>
+                    <tr>
+                        <th>Aplicación</th>
+                        <th class="text-center">Opción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let application of allTheSoftware | keys">
+                        <td> <img width="30px" src="{{allTheSoftware[application] | software}}" [alt]="allTheSoftware[application]"> {{ allTheSoftware[application] }}</td>
+                        <td class="text-center">
+                            <button class="btn btn-info btn-sm">Agregar a linea base</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <!--<div class="col-md-6">
-        <div class="card">
-            <app-registry-chart [chartTitle]="'Las personas que más equipos han prestado'"></app-registry-chart>
-        </div>
-    </div>-->
 </div>
