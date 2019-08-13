@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 
     getTopTenMostLent(){
         let url = ''
-        return this._httpClient.get('http://127.0.0.1:3000/query').pipe( map( data => {
+        return this._httpClient.get('http://10.8.100.89:3000/query').pipe( map( data => {
             return data
         })) 
     }

@@ -14,14 +14,14 @@ export class LoginService {
 
     login(user){
         let url = ''
-        return this._httpClient.post('http://127.0.0.1:3000/device', { user }).pipe( map( data => {
+        return this._httpClient.post('http://10.8.100.89:3000/device', { user }).pipe( map( data => {
             return data
         }))
     }
 
     logout(){
         let url = ''
-        return this._httpClient.post('http://127.0.0.1:3000/device', {}).pipe( map( data => {
+        return this._httpClient.post('http://10.8.100.89:3000/device', {}).pipe( map( data => {
             return data
         })) 
     }

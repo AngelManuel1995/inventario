@@ -13,21 +13,21 @@ export class RegistriesService {
 
     makeLent(device){
         let url = ''
-        return this._httpClient.post('http://127.0.0.1:3000/registry', {device}).pipe( map( data => {
+        return this._httpClient.post('http://10.8.100.89:3000/registry', {device}).pipe( map( data => {
             return data
         }))
     }
 
     getAllRegistries(){
         let url = ''
-        return this._httpClient.get('http://127.0.0.1:3000/registry').pipe( map( data => {
+        return this._httpClient.get('http://10.8.100.89:3000/registry').pipe( map( data => {
             return data
         })) 
     }
 
     getOne(id){
         let url = ''
-        return this._httpClient.get(`http://127.0.0.1:3000/registry/${id}`).pipe( map( data => {
+        return this._httpClient.get(`http://10.8.100.89:3000/registry/${id}`).pipe( map( data => {
             return data
         }))
     }
@@ -46,7 +46,7 @@ export class RegistriesService {
 
     completeRegistry(registry){
         let url = ''
-        return this._httpClient.patch('http://127.0.0.1:3000/registry', {registry}).pipe( map( data => {
+        return this._httpClient.patch('http://10.8.100.89:3000/registry', {registry}).pipe( map( data => {
             return data
         }))
     }

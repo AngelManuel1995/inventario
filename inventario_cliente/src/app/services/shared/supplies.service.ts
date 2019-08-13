@@ -11,7 +11,7 @@ export class SuppliesService {
 
     getAll(){
         let url = ''
-        return this._httpClient.get('http://127.0.0.1:3000/supply').pipe( map( data => {
+        return this._httpClient.get('http://10.8.100.89:3000/supply').pipe( map( data => {
             return data
         }))
     }
@@ -24,21 +24,21 @@ export class SuppliesService {
         }
         let url = ''
         supply.amount = amount
-        return this._httpClient.post('http://127.0.0.1:3000/supply', {supply}).pipe( map( data => {
+        return this._httpClient.post('http://10.8.100.89:3000/supply', {supply}).pipe( map( data => {
             return data
         }))  
     }
 
     rechargeSupplies(suppliesToRecharge, amountToRecharge, type){
         let url = ''
-        return this._httpClient.patch('http://127.0.0.1:3000/supply/recharge', {suppliesToRecharge, amountToRecharge, type}).pipe( map( data => {
+        return this._httpClient.patch('http://10.8.100.89:3000/supply/recharge', {suppliesToRecharge, amountToRecharge, type}).pipe( map( data => {
             return data
         }))   
     }
 
     getOne(id){
         let url = ''
-        return this._httpClient.get(`http://127.0.0.1:3000/supply/${id}`).pipe( map( data => {
+        return this._httpClient.get(`http://10.8.100.89:3000/supply/${id}`).pipe( map( data => {
             return data
         }))
     }

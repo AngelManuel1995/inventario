@@ -35,14 +35,76 @@ export class DevicesComponent {
         Swal.fire({
             title: 'Nuevo Equipo',
             html:
-              '<div class="row"> <div class="col-md-4"> <label for="tipo"> <strong> Tipo </strong> </label> </div> <div class="col-md-8"> <input id="tipo" value="Portatil" class="form-control"> </div>' +
-              '<div class="col-md-4"> <label for="propiedad"> <strong> Propiedad </strong> </label> </div> <div class="col-md-8"> <input id="propiedad" value="Continental Gold" class="form-control"> </div>' + 
-              '<div class="col-md-4"> <label for="marca"> <strong> Marca </strong> </label> </div> <div class="col-md-8"> <input id="marca" value="Lenovo" class="form-control"> </div>' + 
-              '<div class="col-md-4"> <label for="modelo"> <strong> Modelo </strong> </label> </div> <div class="col-md-8"> <input id="modelo" value="Lnv-2019" class="form-control"> </div>' + 
-              '<div class="col-md-4"> <label for="nombre"> <strong> Nombre </strong> </label> </div> <div class="col-md-8"> <input id="nombre" value="lenovo-10" class="form-control"> </div>' +
-              '<div class="col-md-4"> <label for="serial"> <strong> Serial </strong> </label> </div> <div class="col-md-8"> <input id="serial" value="Lnv-s3-r5-t6" class="form-control"> </div>' +
-              '<div class="col-md-4"> <label for="ciudad"> <strong> Ciudad </strong> </label> </div> <div class="col-md-8"> <input id="ciudad" value="Medellín" class="form-control"> </div>' + 
-              '<div class="col-md-4"> <label for="prestamo"> <strong> Para prestar </strong> </label> </div> <div class="col-md-8"> <select id="prestamo" class="form-control"> <options> <option value="true">SI</option> <option value="false">NO</option> </options> </select> </div> </div>',
+            `<div class="row"> 
+                <div class="col-md-4"> 
+                    <label for="tipo"> <strong> Tipo </strong> </label> 
+                </div> 
+                <div class="col-md-8"> 
+                    <select id="tipo" class="form-control"> 
+                    <options> 
+                        <option value="">Seleccione el tipo</option> 
+                        <option value="PORTÁIL">Portátil</option> 
+                        <option value="PC">PC</option> 
+                        <option value="SMARTPHONE">Smartphone</option> 
+                        <option value="MONITOR">Monitor</option> 
+                        <option value="TELÉFONO IP">Teléfono IP</option> 
+                        <option value="IMPRESORA">Impresora</option> 
+                        <option value="OTRO">Otro</option> 
+                    </options> 
+                </select>
+                </div>` +
+            '<div class="col-md-4"> <label for="propiedad"> <strong> Propiedad </strong> </label> </div> <div class="col-md-8"> <input id="propiedad" value="" class="form-control"> </div>' + 
+            `<div class="col-md-4"> 
+                    <label for="marca"> <strong> Marca </strong> </label> 
+            </div> 
+            <div class="col-md-8">
+                    <select id="marca" class="form-control"> 
+                        <options> 
+                            <option value="">Seleccione la marca</option> 
+                            <option value="DELL">DELL</option> 
+                            <option value="HP">HP</option> 
+                            <option value="HUAWEI">Huawei</option> 
+                            <option value="SAMSUNG">Samsung</option> 
+                            <option value="MOTOROLA">Motorola</option> 
+                            <option value="IPHONE">Iphone</option> 
+                            <option value="CISCO">Cisco</option> 
+                            <option value="KYOCERA">Kyocera</option> 
+                            <option value="OTRO">Otro</option> 
+                        </options> 
+                    </select>
+            </div>` + 
+            `<div class="col-md-4"> 
+                    <label for="marca"> <strong> Estado </strong> </label> 
+            </div> 
+            <div class="col-md-8">
+                <select id="estado" class="form-control"> 
+                    <options> 
+                        <option value="">Seleccione el estado</option> 
+                        <option value="ASIGNADO">ASIGNADO</option> 
+                        <option value="BODEGA">BODEGA</option> 
+                        <option value="RECAMBIO">RECAMBIO</option> 
+                        <option value="REPARACIÓN">REPARACIÓN</option> 
+                        <option value="GARANTÍA">GARANTÍA</option> 
+                        <option value="PRESTAMO">PRESTAMO</option> 
+                    </options> 
+                </select>
+            </div>`+
+            '<div class="col-md-4"> <label for="modelo"> <strong> Modelo </strong> </label> </div> <div class="col-md-8"> <input id="modelo" value="" class="form-control"> </div>' + 
+            '<div class="col-md-4"> <label for="nombre"> <strong> Nombre </strong> </label> </div> <div class="col-md-8"> <input id="nombre" value="" class="form-control"> </div>' +
+            '<div class="col-md-4"> <label for="serial"> <strong> Serial </strong> </label> </div> <div class="col-md-8"> <input id="serial" value="" class="form-control"> </div>' +
+            `<div class="col-md-4"> 
+                <label for="ciudad"> <strong> Ubicación </strong> </label> 
+                </div> 
+                <div class="col-md-8"> 
+                    <select id="ciudad" class="form-control"> 
+                    <options> 
+                        <option value="">Seleccione la ubicación</option> 
+                        <option value="MEDELLÍN">Medellín</option> 
+                        <option value="BURITICÁ">Buriticá</option> 
+                    </options> 
+                </select>
+                </div>` + 
+          '<div class="col-md-4"> <label for="prestamo"> <strong> Para prestar </strong> </label> </div> <div class="col-md-8"> <select id="prestamo" class="form-control"> <options> <option value="true">SI</option> <option value="false">NO</option> </options> </select> </div> </div>',
             focusConfirm: false,
             preConfirm: () => {
                 let tipo:any = document.getElementById('tipo')
