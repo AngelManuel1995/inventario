@@ -15,7 +15,7 @@ export class DeviceDetailsComponent {
         this._activatedRoute.params.subscribe(params => {
             this._devicesService.getOne({_id:params['id']}).subscribe(data => {
                 this.device = data
-                this.device.applications.shift()
+                this.device.applications
             })
         })
     }

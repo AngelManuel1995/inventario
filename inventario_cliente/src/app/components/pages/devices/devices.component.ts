@@ -35,12 +35,12 @@ export class DevicesComponent {
         Swal.fire({
             title: 'Nuevo Equipo',
             html:
-            `<div class="row"> 
-                <div class="col-md-4"> 
-                    <label for="tipo"> <strong> Tipo </strong> </label> 
+            `<div class="row" class="width: 90%;"> 
+                <div class="col-md-5"> 
+                    <label for="type"> <strong> Tipo </strong> </label> 
                 </div> 
-                <div class="col-md-8"> 
-                    <select id="tipo" class="form-control"> 
+                <div class="col-md-7"> 
+                    <select id="type" class="form-control"> 
                     <options> 
                         <option value="">Seleccione el tipo</option> 
                         <option value="PORTÁIL">Portátil</option> 
@@ -49,18 +49,18 @@ export class DevicesComponent {
                         <option value="MONITOR">Monitor</option> 
                         <option value="TELÉFONO IP">Teléfono IP</option> 
                         <option value="IMPRESORA">Impresora</option> 
+                        <option value="ESCRITORIO">Escritorio</option> 
                         <option value="OTRO">Otro</option> 
                     </options> 
                 </select>
                 </div>` +
-            '<div class="col-md-4"> <label for="propiedad"> <strong> Propiedad </strong> </label> </div> <div class="col-md-8"> <input id="propiedad" value="" class="form-control"> </div>' + 
-            `<div class="col-md-4"> 
-                    <label for="marca"> <strong> Marca </strong> </label> 
+            `<div class="col-md-5"> 
+                <label for="brand"><strong>Fabricante</strong> </label> 
             </div> 
-            <div class="col-md-8">
-                    <select id="marca" class="form-control"> 
+            <div class="col-md-7">
+                    <select id="brand" class="form-control"> 
                         <options> 
-                            <option value="">Seleccione la marca</option> 
+                            <option value="">Seleccione la fabricante</option> 
                             <option value="DELL">DELL</option> 
                             <option value="HP">HP</option> 
                             <option value="HUAWEI">Huawei</option> 
@@ -73,11 +73,21 @@ export class DevicesComponent {
                         </options> 
                     </select>
             </div>` + 
-            `<div class="col-md-4"> 
-                    <label for="marca"> <strong> Estado </strong> </label> 
+            '<div class="col-md-5"> <label for="model"> <strong> Modelo </strong> </label> </div> <div class="col-md-7"> <input id="model" value="" class="form-control"> </div>' + 
+            '<div class="col-md-5"> <label for="licensePlate"> <strong> Placa </strong> </label> </div> <div class="col-md-7"> <input id="licensePlate" value="" class="form-control"> </div>' + 
+            '<div class="col-md-5"> <label for="operatingSystem"> <strong> Sistema operativo </strong> </label> </div> <div class="col-md-7"> <input id="operatingSystem" value="" class="form-control"> </div>' + 
+            '<div class="col-md-5"> <label for="processor"> <strong> Procesador </strong> </label> </div> <div class="col-md-7"> <input id="processor" value="" class="form-control"> </div>' + 
+            '<div class="col-md-5"> <label for="ramMemory"> <strong> Memoria RAM </strong> </label> </div> <div class="col-md-7"> <input id="ramMemory" value="" class="form-control"> </div>' + 
+            '<div class="col-md-5"> <label for="hardDisk"> <strong> Disco Duro </strong> </label> </div> <div class="col-md-7"> <input id="hardDisk" value="" class="form-control"> </div>' + 
+            '<div class="col-md-5"> <label for="name"> <strong> Nombre equipo </strong> </label> </div> <div class="col-md-7"> <input id="name" value="" class="form-control"> </div>' +
+            '<div class="col-md-5"> <label for="serie"> <strong> Serial </strong> </label> </div> <div class="col-md-7"> <input id="serie" value="" class="form-control"> </div>'+
+            '<div class="col-md-5"> <label for="cpuConnected"> <strong> CPU Conectada </strong> </label> </div> <div class="col-md-7"> <input id="cpuConnected" value="" class="form-control"> </div>'+
+            '<div class="col-md-5"> <label for="typeOfCommunication"> <strong> Tipo Comunicación </strong> </label> </div> <div class="col-md-7"> <input id="typeOfCommunication" value="" class="form-control"> </div>' +
+            `<div class="col-md-5"> 
+                <label for="state"> <strong> Estado </strong> </label> 
             </div> 
-            <div class="col-md-8">
-                <select id="estado" class="form-control"> 
+            <div class="col-md-7">
+                <select id="state" class="form-control"> 
                     <options> 
                         <option value="">Seleccione el estado</option> 
                         <option value="ASIGNADO">ASIGNADO</option> 
@@ -88,50 +98,73 @@ export class DevicesComponent {
                         <option value="PRESTAMO">PRESTAMO</option> 
                     </options> 
                 </select>
-            </div>`+
-            '<div class="col-md-4"> <label for="modelo"> <strong> Modelo </strong> </label> </div> <div class="col-md-8"> <input id="modelo" value="" class="form-control"> </div>' + 
-            '<div class="col-md-4"> <label for="nombre"> <strong> Nombre </strong> </label> </div> <div class="col-md-8"> <input id="nombre" value="" class="form-control"> </div>' +
-            '<div class="col-md-4"> <label for="serial"> <strong> Serial </strong> </label> </div> <div class="col-md-8"> <input id="serial" value="" class="form-control"> </div>' +
-            `<div class="col-md-4"> 
-                <label for="ciudad"> <strong> Ubicación </strong> </label> 
-                </div> 
-                <div class="col-md-8"> 
-                    <select id="ciudad" class="form-control"> 
-                    <options> 
-                        <option value="">Seleccione la ubicación</option> 
-                        <option value="MEDELLÍN">Medellín</option> 
-                        <option value="BURITICÁ">Buriticá</option> 
-                    </options> 
-                </select>
-                </div>` + 
-          '<div class="col-md-4"> <label for="prestamo"> <strong> Para prestar </strong> </label> </div> <div class="col-md-8"> <select id="prestamo" class="form-control"> <options> <option value="true">SI</option> <option value="false">NO</option> </options> </select> </div> </div>',
+            </div>`+ 
+            `<div class="col-md-5"> <label for="userIdCharger"> <strong> Cédula cargar  </strong> </label> </div> <div class="col-md-7"> <input id="userIdCharger" value="" class="form-control"> </div>
+            <div class="col-md-5"> <label for="userNameCharger"> <strong> Nombre cargar </strong> </label> </div> <div class="col-md-7"> <input id="userNameCharger" value="" class="form-control"> </div>
+            <div class="col-md-5"> <label for="ceco"> <strong> Centro costos  </strong> </label> </div> <div class="col-md-7"> <input id="ceco" value="" class="form-control"> </div>
+            <div class="col-md-5"> <label for="userIdAsigned"> <strong> Cédula Asignado  </strong> </label> </div> <div class="col-md-7"> <input id="userIdAsigned" value="" class="form-control"> </div>
+            <div class="col-md-5"> <label for="userNameAsigned"> <strong> Nombre Asignado  </strong> </label> </div> <div class="col-md-7"> <input id="userNameAsigned" value="" class="form-control"> </div>
+            <div class="col-md-5"> <label for="headquarters"> <strong> Sede </strong> </label> </div> <div class="col-md-7"> <input id="headquarters" value="" class="form-control"> </div>
+            <div class="col-md-5"> <label for="flat"> <strong> Piso </strong> </label> </div> <div class="col-md-7"> <input id="flat" value="" class="form-control"> </div>
+            <div class="col-md-5"> <label for="area"> <strong> Area </strong> </label> </div> <div class="col-md-7"> <input id="area" value="" class="form-control"> </div>
+            <div class="col-md-5"> <label for="location"> <strong> Ubicación </strong> </label> </div> <div class="col-md-7"> <input id="location" value="" class="form-control"> </div>
+            `,
             focusConfirm: false,
             preConfirm: () => {
-                let tipo:any = document.getElementById('tipo')
-                let propiedad:any = document.getElementById('propiedad')
-                let marca:any = document.getElementById('marca')
-                let modelo:any = document.getElementById('modelo')
-                let nombre:any = document.getElementById('nombre')
-                let serial:any = document.getElementById('serial')
-                let ciudad:any = document.getElementById('ciudad')
-                let isParaPrestar:any = document.getElementById('prestamo')
+                let type:any = document.getElementById('type')
+                let brand:any = document.getElementById('brand')
+                let model:any = document.getElementById('model')
+                let operatingSystem:any = document.getElementById('operatingSystem')
+                let processor:any = document.getElementById('processor')
+                let licensePlate:any = document.getElementById('licensePlate')
+                let ramMemory:any = document.getElementById('ramMemory')
+                let hardDisk:any = document.getElementById('hardDisk')
+                let cpuConnected:any = document.getElementById('cpuConnected')
+                let typeOfCommunication:any = document.getElementById('typeOfCommunication')
+                let name:any = document.getElementById('name')
+                let serie:any = document.getElementById('serie')
+                let userIdCharger:any = document.getElementById('userIdCharger')
+                let userNameCharger:any = document.getElementById('userNameCharger')
+                let ceco:any = document.getElementById('ceco')
+                let userIdAsigned:any = document.getElementById('userIdAsigned')
+                let userNameAsigned:any = document.getElementById('userNameAsigned')
+                let headquarters:any = document.getElementById('headquarters')
+                let flat:any = document.getElementById('flat')
+                let area:any = document.getElementById('area')
+                let state:any = document.getElementById('state')
+                let location:any = document.getElementById('location')
                 
               return {
-                    type: tipo.value,
-                    ownership: propiedad.value,
-                    brand: marca.value,
-                    model: modelo.value,
-                    name: nombre.value,
-                    serie: serial.value,
-                    city: ciudad.value,
-                    isToLend: isParaPrestar.value
+                    type: type.value,
+                    brand: brand.value,
+                    model: model.value,
+                    name: name.value,
+                    serie: serie.value,
+                    location: location.value,
+                    city: location.value,
+                    userIdCharger: userIdCharger.value,
+                    userNameCharger: userNameCharger.value,
+                    ceco: ceco.value,
+                    userIdAsigned: userIdAsigned.value,
+                    userNameAsigned: userNameAsigned.value,
+                    headquarters: headquarters.value,
+                    flat: flat.value,
+                    area: area.value,
+                    state: state.value,
+                    operatingSystem: operatingSystem.value,
+                    processor: processor.value,
+                    ramMemory: ramMemory.value,
+                    hardDisk: hardDisk.value,
+                    cpuConnected: cpuConnected.value,
+                    typeOfCommunication: typeOfCommunication.value,
+                    licensePlate: licensePlate.value,
               }
             }
           }).then((equipo) =>{
               if(equipo.value){
                   
-                  this._devicesService.save(equipo).subscribe(equipoGuardado => {
-                      this._devicesService.getOne(equipoGuardado).subscribe(equipo => {
+                  this._devicesService.save(equipo).subscribe((equipoGuardado:any) => {
+                      this._devicesService.getOne(equipoGuardado.device).subscribe(equipo => {
                           this.devices.push(equipo)
                       })
                   })  
@@ -143,7 +176,7 @@ export class DevicesComponent {
         Swal.fire({
             title: 'Nuevo Equipo',
             html:
-              '<div class="row"> <div class="col-md-4"> <label for="ip"> <strong> Direccón Ip </strong> </label> </div> <div class="col-md-8"> <input id="ip" value="" placeholder="10.0.0.1" class="form-control"> </div> </div>' ,
+              '<div class="row"> <div class="col-md-5"> <label for="ip"> <strong> Direccón Ip </strong> </label> </div> <div class="col-md-7"> <input id="ip" value="" placeholder="10.0.0.1" class="form-control"> </div> </div>' ,
             focusConfirm: false,
             preConfirm: () => {
                 let ip:any = document.getElementById('ip')            
