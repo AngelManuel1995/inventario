@@ -27,7 +27,7 @@
     "ng2-charts": "^1.6.0",
     "rxjs": "~6.3.3",
     "sweetalert2": "^8.11.7",
-    "xlsx": "^0.14.4",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
